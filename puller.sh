@@ -1,3 +1,9 @@
+# Pulls repositories on mass. Stashes and checks
+# out main before pulling. Can lead to side effects
+# as it will leave the repo checked out on main. Will
+# fail if git or gum are not installed.
+
+
 #!/bin/bash
 
 ROOT_DIR='~/Projects'

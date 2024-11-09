@@ -1,3 +1,8 @@
+# Prints git configuration data in a table formatted
+# by gum. Fails if gum is not installed.
+
+
+
 #!/bin/bash
 
 if !command -v gum &> /dev/null; do
