@@ -6,6 +6,7 @@
 
 # Define some metadata
 USER="aroundwithalex"
+TOKEN=$(echo $GH_AUTH_TOKEN)
 API_ROOT="https://api.github.com"
 PAGE=1
 PER_PAGE=100
