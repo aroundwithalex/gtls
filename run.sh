@@ -42,9 +42,11 @@ for script in ${pwd}/*; do
     chmod +x $script
 done
 
-SCRIPT=$(gum choose --height 15 {"Show config", "Pull all repos", "Clone all repos"})
+SCRIPT=$(gum choose --height 15 "Show config" "Pull all repos" "Clone all repos")
 
-if [[ ${SCRIPT} == "Show Config" ]]; then
+echo ${SCRIPT}
+
+if [[ ${SCRIPT} == "Show config" ]]; then
     bash ./show_config.sh
 elif [[ ${SCRIPT} == "Pull all repos" ]]; then
     bash ./puller.sh

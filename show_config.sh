@@ -5,11 +5,18 @@
 
 #!/bin/bash
 
-if !command -v gum &> /dev/null; do
+if !command -v gum &> /dev/null; then
     echo "Gum is not installed. Please use main run script."
     exit 1
-done
+fi
 
-gum style --align center --border double 'Git configuration'
+config=$(git config --list)
 
-git config --list | awk -F '=' '{print $1, $2}' | gum table --header 'Key\tValue'
+data=""
+while IFS='=' read -r key value; do
+    data+="$key,$value\n"
+done <<< "$config"
+
+gum style --align center --border double "Git Config"
+
+echo -e "$data" | gum table -c "Key,Value" --height=20 --widths 20,40
