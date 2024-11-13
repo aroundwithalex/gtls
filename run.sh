@@ -54,7 +54,7 @@ for script in ${pwd}/*; do
     chmod +x $script
 done
 
-SCRIPT=$(gum choose --height 15 "Show config" "Pull all repos" "Clone all repos")
+SCRIPT=$(gum choose --header "What would you like to do?" --height 15 "Show config" "Pull all repos" "Clone all repos" "Exit")
 
 if [[ ${SCRIPT} == "Show config" ]]; then
     bash ./show_config.sh
@@ -62,4 +62,7 @@ elif [[ ${SCRIPT} == "Pull all repos" ]]; then
     bash ./puller.sh
 elif [[ ${SCRIPT} == "Clone all repos" ]]; then
     bash ./kamino.sh
+else
+    printf "\nBye!\n"
+    exit 0
 fi

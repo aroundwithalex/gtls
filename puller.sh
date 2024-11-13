@@ -6,42 +6,46 @@
 
 #!/bin/bash
 
-ROOT_DIR='~/Projects'
+ROOT_DIR=~/Projects
 
 
 if [ ! -d $ROOT_DIR ]; then
-    echo "${ROOT_DIR} does not exist. Please reset."
+    printf "\n${ROOT_DIR} does not exist. Please reset.\n"
     exit 1
-done
+fi
 
 if ! command -v git &> /dev/null; then
-    echo "git is not installed. Please fix."
+    printf "\ngit is not installed. Please fix.\n"
     exit 1
-done
+fi 
 
 if ! command -v gum &> /dev/null; then
-    echo "gum is not installed. Please fix."
+    printf "\ngum is not installed. Please fix.\n"
     exit 1
-done
+fi
 
-for dir in "$ROOT_DIR"/*/; do
+for dir in "$ROOT_DIR"/*/*/*/; do
 
     if [ ! -d "$dir/.git" ]; then
-        echo "$dir is not a git repo"
+        printf "\n$dir is not a git repo\n"
         continue
     fi
 
-    gum style --align center --border double "Pulling ${dir}"
+    printf "\nPulling ${dir}\n"
 
     cd "$dir" || continue
 
-    gum style --align center --border double "Stashing changes in ${dir}"
+    if [ -n "$(git status --porcelain)" ]; then
 
-    git stash -m "Temporary stash to enable pull"
+        printf "\nStashing changes in ${dir}\n"
 
-    git checkout main
+        git stash -m "Temporary stash to enable pull"
+    fi
+
+    git checkout main || git checkout master
 
     git pull
 
-    gum style --align center --border double "${dir} pulled successfully."
+    printf "\n$dir pulled successfully\n"
+
 done

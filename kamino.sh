@@ -54,3 +54,5 @@ gh repo list $user --visibility "public" --no-archived --source| while read -r r
     printf "\nClone $repo (Public)\n"
     gh repo clone "$repo" "$repo"
 done
+
+printf "\nAll cloned!\null"
