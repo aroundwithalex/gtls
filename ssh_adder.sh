@@ -8,7 +8,7 @@ ssh-keygen -t ed25519 -C "$email"
 
 eval "$(ssh-agent -s)"
 
-read -p "What's the path to your SSH key?" key_path
+read -p "What's the path to your SSH key? " key_path
 
 # These lines for specific for macOS
 ssh_file=~/.ssh/config

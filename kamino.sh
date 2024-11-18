@@ -4,7 +4,7 @@
 
 #! /bin/bash
 
-user="aroundwithalex"
+read -p "What's your GitHub username? " user
 
 mkdir -p ~/Projects/Public 
 mkdir -p ~/Projects/Private 

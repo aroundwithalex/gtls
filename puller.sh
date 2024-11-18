@@ -6,8 +6,7 @@
 
 #!/bin/bash
 
-ROOT_DIR=~/Projects
-
+read -p "What's the root path of your repos? " ROOT_DIR
 
 if [ ! -d $ROOT_DIR ]; then
     printf "\n${ROOT_DIR} does not exist. Please reset.\n"
