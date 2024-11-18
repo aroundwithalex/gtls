@@ -54,7 +54,7 @@ for script in ${pwd}/*; do
     chmod +x $script
 done
 
-SCRIPT=$(gum choose --header "What would you like to do?" --height 15 "Show config" "Pull all repos" "Clone all repos" "Exit")
+SCRIPT=$(gum choose --header "What would you like to do?" --height 15 "Show config" "Pull all repos" "Clone all repos" "Add SSH key" "Exit")
 
 if [[ ${SCRIPT} == "Show config" ]]; then
     bash ./show_config.sh
@@ -62,6 +62,8 @@ elif [[ ${SCRIPT} == "Pull all repos" ]]; then
     bash ./puller.sh
 elif [[ ${SCRIPT} == "Clone all repos" ]]; then
     bash ./kamino.sh
+elif [[ ${SCRIPT} == "Add SSH key" ]]; then
+    bash ./ssh_adder.sh
 else
     printf "\nBye!\n"
     exit 0
