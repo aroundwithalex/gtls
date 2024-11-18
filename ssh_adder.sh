@@ -31,7 +31,6 @@ if [ $(uname) == 'Darwin' ]; then
 
     ssh-add --apple-use-keychain $key_path
 elif [ $(uname) == 'Linux' ]; then
-
     ssh-add $key_path
 fi
 
